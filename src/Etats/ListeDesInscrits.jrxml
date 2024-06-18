@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5029b381-c240-4b41-a697-0d9f88a02300">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="29"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="para_logo" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat('N°',id_inscrip),
+     apprenants.`matricule` AS apprenants_matricule,
+     apprenants.`nom_apprenant` AS apprenants_nom_apprenant,
+     apprenants.`prenom_apprenant` AS apprenants_prenom_apprenant,
+     apprenants.`tel_apprenant` AS apprenants_tel_apprenant,
+     cours.`lib_cours` AS cours_lib_cours,
+     frais_cours.`montant_frais_cours` AS frais_cours_montant_frais_cours,
+     frais_inscription.`montant_frais_inscrip` AS frais_inscription_montant_frais_inscrip,
+     inscription.`id_inscrip` AS inscription_id_inscrip,
+     inscription.`type_inscrip` AS inscription_type_inscrip,
+     inscription.`date_inscrip` AS inscription_date_inscrip
+FROM
+     `cours` cours INNER JOIN `frais_cours` frais_cours ON cours.`id_cours` = frais_cours.`id_cours_frais`
+     INNER JOIN `inscription` inscription ON cours.`id_cours` = inscription.`id_cours_inscrip`
+     AND frais_cours.`id_frais_cours` = inscription.`id_frais_cours_inscrip`
+     INNER JOIN `apprenants` apprenants ON inscription.`id_apprenant_inscrip` = apprenants.`id_apprenant`
+     INNER JOIN `frais_inscription` frais_inscription ON inscription.`id_fraisInscrip_inscrip` = frais_inscription.`id_frais_inscrip`]]>
+	</queryString>
+	<field name="concat(&apos;N°&apos;,id_inscrip)" class="java.lang.String"/>
+	<field name="apprenants_matricule" class="java.lang.String"/>
+	<field name="apprenants_nom_apprenant" class="java.lang.String"/>
+	<field name="apprenants_prenom_apprenant" class="java.lang.String"/>
+	<field name="apprenants_tel_apprenant" class="java.lang.String"/>
+	<field name="cours_lib_cours" class="java.lang.String"/>
+	<field name="frais_cours_montant_frais_cours" class="java.lang.Integer"/>
+	<field name="frais_inscription_montant_frais_inscrip" class="java.lang.String"/>
+	<field name="inscription_id_inscrip" class="java.lang.Integer"/>
+	<field name="inscription_type_inscrip" class="java.lang.String"/>
+	<field name="inscription_date_inscrip" class="java.lang.String"/>
+	<variable name="apprenants_matricule_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{apprenants_matricule}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="303" y="10" width="414" height="39" forecolor="#0033CC" uuid="d2b0f1b6-15ec-48d1-adda-0ad25cb4ec95"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="315" y="13" width="382" height="29" uuid="43386649-402c-4b09-baa8-fecf525a978e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTES DES APPRENANTS INSCRITS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="62" width="406" height="17" forecolor="#CC6600" uuid="f7e84485-51e8-40fd-9340-0c8adf7ef7cf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Bell MT" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CABINET DE FORMATION FINEPRESS ACADEMIC AND BUSINESS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="91" width="802" height="1" uuid="c4500673-1ee1-4bfc-b7b7-78874194f6c9"/>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="1" width="140" height="90" uuid="11016606-427c-40cd-a31e-de84608df07c"/>
+				<imageExpression><![CDATA[$P{para_logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="97" y="0" width="72" height="20" uuid="16d6eee4-a0f0-4039-8ba5-5056b2173be6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATRICULE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="0" width="104" height="20" uuid="b74a3cd7-e437-4ec3-9d0a-cd0e9937ce43"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="0" width="138" height="20" uuid="e8d278c8-e561-419f-908e-dc3b65d803bd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRENOM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="0" width="83" height="20" uuid="92e45562-cf33-46b4-b435-ab9f0636bb67"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEPHONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="0" width="77" height="20" uuid="c0ef7b49-c67d-4d06-aae4-62888e8519c8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COURS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="571" y="0" width="75" height="20" uuid="4a917a54-5ef7-4152-ae9b-f337197cb08e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TYPE INSCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="646" y="0" width="95" height="20" uuid="85c3e56d-4b8a-4994-a0d4-8a141b48557d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE INSCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="25" height="20" uuid="46560c5b-934c-4eb3-a52a-5f7cae0be40f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="646" y="0" width="95" height="20" uuid="867be775-11dd-40de-b687-cb70109c27e3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{inscription_date_inscrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="77" height="20" uuid="91bbeb70-162c-4ea4-b77b-bfc9c0e4cdec"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cours_lib_cours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="571" y="0" width="75" height="20" uuid="1538ff37-2ad0-4f14-8420-498c51604b40"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{inscription_type_inscrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="83" height="20" uuid="743a2e07-e53f-443a-a018-754cd4625b3c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apprenants_tel_apprenant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="138" height="20" uuid="b7286da6-9397-4629-8a50-3999016e6d54"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apprenants_prenom_apprenant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="0" width="104" height="20" uuid="197dd9f9-ca3f-48eb-b7a1-b48cc880e235"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apprenants_nom_apprenant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="0" width="72" height="20" uuid="5984b5fb-f742-49f6-a0b3-a81486263926"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apprenants_matricule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="25" height="20" uuid="cdaeaa07-eaaa-40cc-a360-abb02076eff0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="655" y="2" width="100" height="20" uuid="be7dbe95-4640-4ee9-b391-8464549b1b23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="12"/>
+				</textElement>
+				<text><![CDATA[DG CAFFAB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="629" y="20" width="173" height="20" uuid="4911a284-8c20-426c-990f-2d7f500c174a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[MILLIMONO TAMBA PASCAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="0" width="100" height="18" uuid="de98d900-1a5e-443a-8667-4a0fdc7063fa"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Rockwell" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="124" height="20" uuid="01a119fd-f97b-4dd1-b203-301a9d56d97c"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL INSCRITS :]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="426b1dc0-f94e-4b7a-a54d-89f3488deb7b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="320"/>
+	<parameter name="para_logo" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     fiche_renseign.`nbre_jour` AS fiche_renseign_nbre_jour,
+     fiche_renseign.`heures_seances` AS fiche_renseign_heures_seances,
+     fiche_renseign.`duree` AS fiche_renseign_duree,
+     frais_cours.`montant_frais_cours` AS frais_cours_montant_frais_cours,
+     cours.`lib_cours` AS cours_lib_cours
+FROM
+     fiche_renseign,frais_cours,cours
+WHERE
+     id_cours_fiche = id_cours
+     and id_fraisCours_fiche = id_frais_cours]]>
+	</queryString>
+	<field name="fiche_renseign_nbre_jour" class="java.lang.String"/>
+	<field name="fiche_renseign_heures_seances" class="java.lang.String"/>
+	<field name="fiche_renseign_duree" class="java.lang.String"/>
+	<field name="frais_cours_montant_frais_cours" class="java.lang.Integer"/>
+	<field name="cours_lib_cours" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="215" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="422" height="65" uuid="e503b917-84e5-4c83-b3ad-54db95c1a733"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FINE-PRESS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="65" width="555" height="1" uuid="598e18e6-9d53-4ec9-9d59-4eee02de1a60"/>
+			</line>
+			<line>
+				<reportElement x="0" y="106" width="555" height="1" uuid="d46be245-24bb-4812-868c-ea1ab85a5eb3"/>
+			</line>
+			<staticText>
+				<reportElement x="163" y="66" width="284" height="20" uuid="570371c4-c127-4f38-91b0-0fb1b0a69246"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMATION - INFORMATIQUE - BUREAUTIQUE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="86" width="518" height="20" uuid="242410b3-8aae-44c1-9c37-38c98d568df8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[<< La clé pour optimiser votre quête d'emploi et booter votre carrière professionnelle>>]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="442" y="6" width="100" height="53" uuid="579144e7-97e9-4df7-9f49-7a4cf1704b6f"/>
+				<imageExpression><![CDATA[$P{para_logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="258" y="110" width="92" height="20" uuid="b952bfe6-e081-48b6-9095-71005d418fc6"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(+224) 624 08 89 78]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="110" width="52" height="20" uuid="f2f57903-9327-4818-bbdf-5487fc7a7a62"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="130" width="52" height="20" uuid="fc9fe52b-ff0c-408e-a353-5c01211a1360"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="130" width="284" height="20" forecolor="#0033CC" uuid="fc11054a-33c5-4a4c-ba40-7f1777b74f96"/>
+				<textElement>
+					<font size="10" isBold="false" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ffinepress@gmail.com / pascaltambamillimono98@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="189" width="301" height="20" uuid="f6f19132-a9b0-4d70-b57d-a4e715a8674d"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Rockwell" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[20.000 GNF (matricule & carte) et 2 photos d'identité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="189" width="119" height="20" uuid="b6be367f-b553-4311-9d6d-8c8a305c5132"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Frais d'Inscription :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="150" width="326" height="20" uuid="ccefcfd4-ab1b-4847-b07a-f878631f6afa"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Rockwell" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Gomboyah Usine d'Emballage à côté de la Bac]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="170" width="284" height="20" forecolor="#FF9900" uuid="25e0a830-f9c2-4503-925c-a4eb4a8cebd7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHE DE RENSEIGNEMENT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="224" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="204" width="100" height="20" uuid="e19c1c95-6556-4752-966d-7f05a6d2d906"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jours / Semaines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="204" width="100" height="20" uuid="92fedf4e-3896-407b-9585-6eb7b752e409"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tarifs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="204" width="100" height="20" uuid="9ff74212-30ee-49a5-abe9-63fac9b7eeb9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COURS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="204" width="100" height="20" uuid="5d6d625e-413d-4b6c-b9d0-cd39d1a391ad"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Durée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="204" width="100" height="20" uuid="c183d249-625b-4aa3-956a-9ccf494c5101"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Heures / Séances]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="0" width="555" height="96" uuid="d8497071-9d23-4062-b002-80a3ceb76fd4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Rockwell" size="11" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[NB: Nous rappelons que chaque fin de logiciel est sanctionnée par une évaluation et la fin de formation sera couronnée par un certificat Professionnel. (Il faut faire au moins trois logiciels en formation Bureautique pour être ligible d'avoir un Attestation)
+
+^  Les Brochures sont payables avant le début de la formation pour chaque logiciel.
+^  Les frais de formation payées ne sont pas remboursables quel que soit le motif.
+^  Toute absence non justifier est considéré comme séance validé.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="96" width="124" height="20" uuid="ea417700-1cea-457e-a866-833b7bb364cc"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Brochure : 25.000 GNF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="138" width="555" height="48" uuid="94bc22cf-8532-43ab-9fe4-924f05e285e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Rockwell" size="11" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Impression sur les Tee-shirts, Tasses, Casquettes, et autres ... Saisie, Impression, Photocopie, Plastification, Reliure, Scannage & Envoi, conception des Cartes, Logo, Affiches, badges, Brochures, Attestation, Dépannage d'ordinateur, ...
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="116" width="124" height="20" uuid="a0904a8c-f7bd-4dd7-976c-71ace139cb86"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESTATION SERVICES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="206" y="0" width="100" height="20" uuid="9ff9e5e1-c728-4a92-b78c-1e309b70d712"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fiche_renseign_heures_seances}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="0" width="100" height="20" uuid="7df38c84-d229-421a-94ec-860c7c8657c0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cours_lib_cours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="0" width="100" height="20" uuid="f4dfbfc1-c380-4206-ae1e-3d96e03fd460"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fiche_renseign_nbre_jour}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="0" width="100" height="20" uuid="611d4b14-e67b-41aa-ae8f-2cffa0bdff5b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fiche_renseign_duree}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="0" width="100" height="20" uuid="3527fb70-e56a-4bbd-b4a2-9b571bf5cdcf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frais_cours_montant_frais_cours}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="115" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

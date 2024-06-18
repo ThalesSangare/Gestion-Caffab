@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29d98df7-421c-45e4-bf36-35b788fff6ce">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="para_date_fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="para_logo" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="para_tel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat('+224 ',tel_apprenant) as tel_apprenant,
+     apprenants.`matricule` AS apprenants_matricule,
+     apprenants.`nom_apprenant` AS apprenants_nom_apprenant,
+     apprenants.`prenom_apprenant` AS apprenants_prenom_apprenant,
+     cours.`lib_cours` AS cours_lib_cours,
+     Apprenants.`nom_apprenant` AS Apprenants_nom_apprenant,
+     Apprenants.`prenom_apprenant` AS Apprenants_prenom_apprenant,
+     Apprenants.`tel_apprenant` AS Apprenants_tel_apprenant,
+     inscription.`date_inscrip` AS inscription_date_inscrip
+FROM
+     `Apprenants` Apprenants,
+     `cours` cours,
+     `inscription` inscription
+WHERE
+     id_apprenant = id_apprenant_inscrip
+     and id_cours = id_cours_inscrip
+     and apprenants.tel_apprenant = $P{para_tel}]]>
+	</queryString>
+	<field name="tel_apprenant" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apprenants_matricule" class="java.lang.String"/>
+	<field name="apprenants_nom_apprenant" class="java.lang.String"/>
+	<field name="apprenants_prenom_apprenant" class="java.lang.String"/>
+	<field name="cours_lib_cours" class="java.lang.String"/>
+	<field name="Apprenants_tel_apprenant" class="java.lang.String"/>
+	<field name="inscription_date_inscrip" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="39" width="565" height="73" forecolor="#000099" uuid="6612b73d-89be-49fb-80d8-467d9f6b94c4"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="62" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTESTATION]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="126" height="112" uuid="165c44a3-02a1-4028-9662-507decce6fbc"/>
+				<imageExpression><![CDATA[$P{para_logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="565" y="0" width="233" height="20" uuid="c19a9385-e15f-49b9-9a12-a302a05d62e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DE GUINEE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="607" y="20" width="47" height="14" forecolor="#CC0000" uuid="fe12bbcf-e2d3-4cb4-a2e1-6a3d47ebe9f7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Travail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="654" y="20" width="47" height="14" forecolor="#FFCC00" uuid="bbb2a2a4-597d-418d-862f-0f2f9912ab1c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Justice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="701" y="20" width="60" height="14" forecolor="#00CC00" uuid="655c31f1-43e4-40a3-a5d6-9ce5036df1f8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-Solidarité]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="234" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement mode="Transparent" x="126" y="55" width="601" height="179" uuid="bd826fdf-dd0f-42ea-af76-e5ecf7c4a5d5"/>
+				<imageExpression><![CDATA["C:\\Users\\Meeriame\\Documents\\NetBeansProjects\\Caffab\\src\\images\\log.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="46" y="81" width="732" height="22" uuid="f0e29d4d-5761-4615-8a39-ab5bc9bdd2be"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<text><![CDATA[Je Soussigné, Monsieur MILLIMONO Pascal Tamba Directeur général de FINE-PRESS, atteste que :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="127" width="151" height="20" uuid="5de3168d-bc51-45c3-a6ec-5a829dbbc662"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Rockwell" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_nom_apprenant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="127" width="171" height="20" uuid="60713a8c-943e-47d2-a3cd-d438063c3c37"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_prenom_apprenant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="418" y="127" width="89" height="20" uuid="b57e9288-4d85-4210-b4ce-0784f34d463c"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Téléphone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="168" width="476" height="20" uuid="aa192665-b30f-4579-8f13-9d901d569a78"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<text><![CDATA[a suivi l'intégralité de la formation en l'Informatique de base du :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="200" width="654" height="20" uuid="600cebe7-d0d8-4b9b-9bae-6d4098cb8abe"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[En foi de quoi, la présente Attestation lui est délivré pour servir et valoir ce que de droit ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="168" width="100" height="20" uuid="8aac3e80-137e-4105-a8d5-a5084709d155"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscription_date_inscrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="634" y="168" width="81" height="20" uuid="0e0ca2a5-d0f0-4758-bb99-422e75dc6636"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_date_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="518" y="127" width="100" height="20" uuid="c08e4848-3aaa-4908-9bb4-0f05d9993055"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_tel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="607" y="168" width="27" height="20" uuid="ddf7f5a0-fd7d-42f4-82ab-9ddd754fcd7e"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<text><![CDATA[Au]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="610" height="62" forecolor="#000099" uuid="7a2dd996-b086-4b32-9e0e-21ecb16b4381"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRE DE FORMATION / CAFFAB  / INFORMATIQUE – BUREAUTIQUE
+Gomboyah Usine d’emballage
+ffinepress@gmail.com / +224 624 08 89 78 / 622 54 83 08]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="486" y="0" width="265" height="20" uuid="b5f53037-ccbd-4a1e-b4aa-088ca1c1f3ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<text><![CDATA[Directeur Général]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="76" width="265" height="20" uuid="3fde9bbc-0a4c-49cd-a5c9-b2e8820f1fa6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MILLIMONO Tamba Pascal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="10" width="265" height="20" uuid="0c070d94-3d22-40d0-a1ba-0c5910abfe89"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<text><![CDATA[Le Formateur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="76" width="265" height="20" uuid="0bbda221-9b0b-4328-9fd3-bf64120afebc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SANGARE Thales Kabinet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="34" width="70" height="20" uuid="f66fbf8f-d5bc-4ffc-b5ca-adf397186377"/>
+				<textElement>
+					<font fontName="Rockwell" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Coyah le ,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="367" y="32" width="81" height="20" uuid="5dc9b6d8-71d3-4b54-9609-fb8c7a698651"/>
+				<textElement>
+					<font fontName="Rockwell" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_date_fin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

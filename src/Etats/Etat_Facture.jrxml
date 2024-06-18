@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1d0a158-5c3f-4d8f-b8a8-d23708368229">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="162"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="para_logo" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="para_codeQr" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="para_id_inscrip" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat('N°',id_inscrip) AS numFacture,
+     apprenants.`matricule` AS apprenants_matricule,
+     apprenants.`nom_apprenant` AS apprenants_nom_apprenant,
+     apprenants.`prenom_apprenant` AS apprenants_prenom_apprenant,
+     apprenants.`tel_apprenant` AS apprenants_tel_apprenant,
+     apprenants.`photo` AS apprenants_photo,
+     frais_cours.`montant_frais_cours` AS frais_cours_montant_frais_cours,
+     frais_inscription.`montant_frais_inscrip` AS frais_inscription_montant_frais_inscrip,
+     inscription.`type_inscrip` AS inscription_type_inscrip,
+     inscription.`date_inscrip` AS inscription_date_inscrip,
+     cours.`lib_cours` AS cours_lib_cours,
+     facture.`Montant_Total` AS facture_Montant_Total,
+     facture.`Montant_Payer` AS facture_Montant_Payer,
+     facture.`Montant_restant` AS facture_Montant_restant
+FROM
+     cours,inscription,frais_inscription,frais_cours,facture,apprenants
+WHERE
+     id_apprenant = id_apprenant_inscrip
+     and id_frais_cours = id_frais_cours_inscrip
+     and id_frais_inscrip = id_fraisInscrip_inscrip
+     and id_cours = id_cours_inscrip
+     and id_facture=id_facture_inscrip
+     and inscription.id_inscrip = $P{para_id_inscrip}]]>
+	</queryString>
+	<field name="numFacture" class="java.lang.String"/>
+	<field name="apprenants_matricule" class="java.lang.String"/>
+	<field name="apprenants_nom_apprenant" class="java.lang.String"/>
+	<field name="apprenants_prenom_apprenant" class="java.lang.String"/>
+	<field name="apprenants_tel_apprenant" class="java.lang.String"/>
+	<field name="apprenants_photo" class="java.io.InputStream"/>
+	<field name="frais_cours_montant_frais_cours" class="java.lang.Integer"/>
+	<field name="frais_inscription_montant_frais_inscrip" class="java.lang.Integer"/>
+	<field name="inscription_type_inscrip" class="java.lang.String"/>
+	<field name="inscription_date_inscrip" class="java.lang.String"/>
+	<field name="cours_lib_cours" class="java.lang.String"/>
+	<field name="facture_Montant_Total" class="java.lang.Integer"/>
+	<field name="facture_Montant_Payer" class="java.lang.Integer"/>
+	<field name="facture_Montant_restant" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="189" y="0" width="351" height="35" uuid="b36df210-e95a-41e0-86e6-e41289b34ffd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACTURE D'INSCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="29" width="330" height="17" forecolor="#CC6600" uuid="5c2179d3-b29d-45d6-b5b4-ad5a6a304694"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[CABINET DE FORMATION FINEPRESS ACADEMY AND BUSINESS]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="39" y="0" width="100" height="87" uuid="67989ed3-5993-4523-9e9b-6893a9027daf"/>
+				<imageExpression><![CDATA[$P{para_logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="272" y="43" width="223" height="20" uuid="15f897b1-44c1-4d40-9b4f-01e7a96ef5e4"/>
+				<textElement>
+					<font fontName="Rockwell" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Contact: 624 08 89 78 / 622 54 83 08]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="55" width="211" height="20" uuid="33451c8a-81a8-4013-9ec8-a027c52205dd"/>
+				<textElement>
+					<font fontName="Rockwell" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Email : ffinepress@gmail.com]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="172" splitType="Stretch">
+			<staticText>
+				<reportElement x="73" y="92" width="100" height="20" uuid="eacfecd4-fb18-4328-95dd-db235def74d0"/>
+				<textElement>
+					<font fontName="Rockwell" size="12"/>
+				</textElement>
+				<text><![CDATA[Matricule]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="92" width="100" height="20" uuid="994584b6-f008-42a6-8079-3b2ca10499d7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_matricule}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="112" width="100" height="20" uuid="d118e351-09b3-4e68-b094-0e76514e5e3e"/>
+				<textElement>
+					<font fontName="Rockwell" size="12"/>
+				</textElement>
+				<text><![CDATA[Nom]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="112" width="100" height="20" uuid="5facfca2-a6a1-423e-9194-a316c89b1caa"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_nom_apprenant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="132" width="100" height="20" uuid="293f01f6-d0d1-4bfa-bcd3-55666866f838"/>
+				<textElement>
+					<font fontName="Rockwell" size="12"/>
+				</textElement>
+				<text><![CDATA[Prenom]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="132" width="100" height="20" uuid="fb7129fd-2c00-400c-b547-c5186d953344"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_prenom_apprenant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="152" width="100" height="20" uuid="d55e16f4-977e-4a84-bdf7-51a4df6dd6da"/>
+				<textElement>
+					<font fontName="Rockwell" size="12"/>
+				</textElement>
+				<text><![CDATA[Telephone]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="173" y="152" width="100" height="20" uuid="49024a0c-2ebc-482f-bbac-155ec4268be7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apprenants_tel_apprenant}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="425" y="92" width="100" height="70" uuid="b5116950-6479-4cfa-86e6-b71c9ec7e10c"/>
+				<imageExpression><![CDATA[$F{apprenants_photo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="84" width="555" height="1" uuid="643c8f3a-ed20-4bad-8a55-c9b0b3365939"/>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement x="425" y="10" width="100" height="68" uuid="29ded6ba-31ef-47a9-9a6e-51eb396c1b5f"/>
+				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+new com.google.zxing.qrcode.QRCodeWriter().encode(
+$P{para_codeQr}, com.google.zxing.BarcodeFormat.QR_CODE,300,300))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="71" y="2" width="58" height="20" uuid="11bab72b-4d72-4f83-a05a-46c45b899630"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°Reçu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="27" width="58" height="20" uuid="695682ab-130a-4930-8cce-cdfdf817802e"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cours :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="27" width="93" height="20" uuid="4f865219-b65e-454f-8961-be635e3e6f22"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cours_lib_cours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="2" width="93" height="20" uuid="5f72bee1-53cf-4e26-92bc-c422cfc0f8c2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_id_inscrip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="71" y="58" width="48" height="20" uuid="2ea3e3b8-95be-4b98-99e5-544b1fb7cc15"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="58" width="104" height="20" uuid="e0ed3cc5-fd3c-4726-9bf0-7be8de57e590"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscription_date_inscrip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="212" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="46" width="28" height="20" uuid="d974c235-9b93-404f-8ee4-7d059638f30d"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GNF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="159" y="14" width="75" height="20" uuid="e793603e-7b79-4c0e-baef-94abfeee145b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frais_cours_montant_frais_cours}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="245" y="179" width="90" height="20" uuid="5647025e-f336-4da1-8e0f-4d3d9f544687"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comptable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="14" width="88" height="20" uuid="85451750-07e3-4013-aae5-a94dfc76f863"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frais du Cours :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="46" width="99" height="20" uuid="54228eab-b367-4253-923e-2984e909a85b"/>
+				<textElement>
+					<font fontName="Rockwell" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Frais inscription :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="179" width="90" height="20" uuid="5e6753fc-fe5f-40b6-b546-52766b93cc10"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apprenant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="14" width="28" height="20" uuid="ced13448-3f83-4151-bd3b-6b08cd8ab2d3"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GNF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="14" width="28" height="20" uuid="c9432743-42ac-4b7c-9c21-8e20f1c59c8c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GNF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="14" width="90" height="20" uuid="bc8329fd-27f4-4a02-a891-7644d10b4954"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net à Payer :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="46" width="60" height="20" uuid="48a38547-861a-4564-b6e6-2524edd7ce68"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{frais_inscription_montant_frais_inscrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="14" width="93" height="20" uuid="1d0fc8c0-cac7-493c-92c7-ee0797c71922"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facture_Montant_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="46" width="93" height="20" uuid="26cd3a73-ae7d-4581-b7b7-c19ec787244a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facture_Montant_Payer}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="328" y="46" width="91" height="20" uuid="8b5ed89f-af7f-4e21-958a-82bff7e712d6"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Payer]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="327" y="84" width="64" height="20" forecolor="#CC0000" uuid="8ac0e22c-dc35-4351-b83a-c44d854f6644"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facture_Montant_restant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="218" y="84" width="110" height="20" forecolor="#CC0000" uuid="d079f5a6-2e27-410b-a5f5-96ce1055ea78"/>
+				<textElement>
+					<font fontName="Rockwell" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant Restant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="46" width="28" height="20" uuid="14a7e1cf-5161-4c6e-9184-a3e12ab22f88"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GNF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="84" width="28" height="20" uuid="16835afa-bbf6-43ed-bd36-c2e5c3d8fb71"/>
+				<textElement textAlignment="Right">
+					<font fontName="Rockwell" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GNF]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
